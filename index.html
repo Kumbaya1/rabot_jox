@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01首页</title>
+    <link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/01首页.css">
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        body{
+            position: relative;
+        }
+        #dialog{
+            left:0;
+            top:0;
+            bottom:0;
+            right:0;
+            position:absolute;
+            display:none;
+        }
+        #dialog-mask{
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            right:0;
+            background: #ccc;
+            opacity:0.6;
+        }
+        #dialog-content{
+            padding:10px 20px;
+            width:80%;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-left:-40%;
+            margin-top:-30px;
+            text-align: center;
+            font-size:20px;
+            background: #fff;
+            -webkit-border-radius:;
+            -moz-border-radius:;
+            border-radius:5px;
+        }
+        #dialog-content button{
+            font-size:18px;
+            padding:1px 6px;
+            border-radius:15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" id="app">
+        <nav class="navbar navbar-default"><span> 车险报价</span><a href="01-消息列表.html"><img src="img/信息.png" alt="消息" class="icon"></a></nav>
+        <div class="imgs">
+            <img src="img/0bfc51e809297001396ba600b4a31914.jpg" alt="图片">
+        </div>
+        <div class="query">
+            <ul id="myTab" class="nav nav-tabs text-center">
+                    <li class="active">
+                        <a href="#home" data-toggle="tab">车牌号</a>
+                    </li>
+                    <li>
+                        <a href="#engine" data-toggle="tab">发动机号，车架号</a>
+                    </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active form-group" id="home">
+                    <span><img src="img/汽车.png" alt=""/>车牌号码<input type="text" class="form-control" v-model="vehicle" placeholder="车牌号"/></span>
+                    <br/>
+                    <span><img src="img/地区.png" alt=""/>投保地区
+                        <!--<select class="form-control" name="" id="">-->
+                            <!--<option  value="哈尔滨">哈尔滨</option>-->
+                        <!--</select>-->
+                        <input type="text" class="form-control" value="哈尔滨"  readonly="readonly"  placeholder="哈尔滨"/></span>
+                </div>
+                <div class="tab-pane fade form-group" id="engine">
+                    <span><img src="img/发动机号.png" alt=""/>发动机号<input type="text" class="form-control"  v-model="engine_number" placeholder="发动机号"/></span>
+                    <br/>
+                    <span><img src="img/车架号.png" alt=""/>车架号&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" v-model="vin" placeholder="车架号"/></span>
+                    <br/>
+                    <span><img src="img/地区.png" alt=""/>投保地区<input type="text" class="form-control"  readonly="readonly"  placeholder="哈尔滨"/></span>
+                </div>
+            </div>
+        </div>
+        <div id="area" class="row">
+            <!--check.html-->
+            <a :href="url"><button type="button" class="btn btn-danger btn-md col-xs-6 col-xs-offset-3" @click="search">下一步</button></a>
+        </div>
+        <div id="footer" class="navbar-fixed-bottom row">
+                <nav class="navbar navbar-brand navbar-fixed-bottom">
+                    <ul class="nav-tabs">
+                        <li class="col-xs-3 btn btn-sm "><a href="index.html">
+                            <img src="img/other/1.png" alt="" class="icon nav"/><br/>
+                            <span class="default">车险报价</span></a>
+                        </li>
+                        <li class="col-xs-3 btn btn-sm"><a href="record.html">
+                            <img src="img/2.png" alt="" class="icon nav"/><br/>
+                            <span>报价记录</span></a></li>
+                        <li class="col-xs-3 btn btn-sm"><a href="customer.html">
+                            <img src="img/3.png" alt="" class="icon nav"/><br/>
+                            <span>客户</span></a></li>
+                        <li class="col-xs-3 btn btn-sm"><a href="my.html">
+                            <img src="img/4.png" alt="" class="icon nav"/><br/>
+                            <span>我的</span></a></li>
+                    </ul>
+                </nav>
+        </div>
+
+    </div>
+    <div id="dialog" >
+        <div id="dialog-mask"></div>
+        <div id="dialog-content">
+            <span>您输入的<br>信息有误，请重新输入</span><br>
+            <button id="s-btn">确认</button>
+        </div>
+    </div>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/vue.js"></script>
+    <script>
+        $("#s-btn").on("click",function(){
+            $("#dialog").css("display","none");
+        })
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                resultList:{},
+                vehicle:"",
+                engine_number:"",
+                vin:"",
+                url:"javascript:;",
+                arr:[]
+            },
+            methods:{
+                search:function(){
+                    var flag = false;                      //标志位，判断输入的信息是否健全
+                    var sStorage = window.sessionStorage;
+                    this.vehicle = this.vehicle.toUpperCase();
+                    if(this.vehicle != ""){
+//                        sStorage.setItem("vehicle",this.vehicle);
+                        this.arr.push({vehicle:this.vehicle});
+                        flag = true;
+                    }else if(this.engine_number != "" && this.vin != ""){
+//                        sStorage.setItem("engine_number",this.engine_number);
+//                        sStorage.setItem("vin",this.vin);
+                        this.engine_number = this.engine_number.toUpperCase();
+                        this.vin = this.vin.toUpperCase();
+                        this.arr.push({"engine_number":this.engine_number});
+                        this.arr.push({"vin":this.vin});
+                        flag = true;
+                    }
+                    if(flag){
+                        var _this = this;
+                        $.getJSON("http://127.0.0.1/robotjox/welcome/indexSearch?callback=?",{"data":this.arr},function(data){
+                            console.log(data);
+                            if(data.constructor == Array){
+//                                console.log(data);
+//                                alert("未查询到您的信息，请重新输入");
+                                $("#dialog").toggle();
+
+                                _this.vehicle = "";
+                                _this.engine_number = "";
+                                _this.vin = "";
+                                sStorage.clear();
+                            }else{
+                                for(var p in data.infor){
+                                    sStorage.setItem(p,data.infor[p]);
+                                }
+                                for(var m in data.owner_infor){
+                                    if(m != "id"){
+                                        sStorage.setItem(m,data.owner_infor[m]);
+                                    }
+                                }
+                                for(var n in data.date_time){
+                                    if( n!= "id" && n!= "vehicle_id"){
+                                        sStorage.setItem(n,data.date_time[n]);
+                                    }
+                                }
+                                window.location.href = "check.html";
+                            }
+                        })
+                    }else{
+//                        alert("未查询到您的信息，请重新输入");
+                            $("#dialog").toggle();
+                    }
+
+
+//                    if( this.vehicle != "" || (this.engine_number != "" && this.vin != "")){
+//                        var str = "check.html" + "?ve="+this.vehicle + "&en="+this.engine_number+"&vi="+this.vin;
+//                        this.url = str;
+//                    }else{
+////                        alert("请输入车牌号等信息");
+//                        e.preventDefault();
+//                    }
+
+                }
+            }
+//            created:function(){
+//                var _this = this;
+//                var obj = {
+//
+//                }
+//                $.getJSON("http://127.0.0.1/robotjox/welcome/indexSearch?callback=?",function(data){
+//                    _this.resultList = data;
+//                    var sStorage = window.sessionStorage;
+//                    console.log(vm.resultList);
+//                })
+//            }
+        });
+
+    </script>
+</body>
+</html>

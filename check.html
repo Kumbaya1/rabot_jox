@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/check.css">
+    <title>查询详情</title>
+</head>
+<body>
+    <div class="container-fluid" id="app">
+        <div id="header">
+            <nav class="navbar navbar-default navbar-fixed-top"><a href="index.html" class=""><img src="img/返回.png" alt="消息" class="icon"></a><span>查询详情</span></nav>
+        </div>
+        <div class="details">
+            <span id="licence">{{resultList.vehicle_id}}</span>
+            <ul>
+                <li>品牌型号：<span>{{resultList.vehicle_brand}}BH7180PAY轿车</span></li>
+                <li>车&nbsp;&nbsp;&nbsp;架&nbsp;&nbsp;&nbsp;号：<span>{{resultList.vin}}</span></li>
+                <li>发动机号：<span>{{resultList.engine_number}}</span></li>
+                <li>注册日期：<span>{{resultList.regist_data}}</span></li>
+                <li>车主姓名：<span>{{resultList.owner_name}}</span></li>
+            </ul>
+        </div>
+        <table class="table">
+            <tbody>
+            <caption class="name">录入时间：2017-10-11 13:39:02<span>业务员：哈尔滨...</span></caption>
+            <tr class="row">
+                <td id="a" class="col-xs-12"><span>去年投保信息</span></td>
+            </tr>
+            <!--<tr class="row">
+                <td id="b" class="col-xs-12"><span>未检索到投保信息</span></td>
+            </tr>-->
+            </tbody>
+        </table>
+        <div class="container">
+            <ul>
+                <li>商业险到期时间：<span>{{resultList.start_data}}</span></li>
+                <li>交强险到期时间：<span>{{resultList.end_data}}</span></li>
+                <li>投保公司：<span>中国人寿车险</span></li>
+                <li>交强险保单号：<span>***********</span></li>
+                <li>商业险报单号：<span>***********</span></li>
+                <li>机构名称：<span>黑龙江省绥化分公司本级银保团队</span></li>
+            </ul>
+            <img src="img/哭.png" alt=""/>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>险种</th>
+                    <th>保期/责任期额</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>机动车损失保险</td>
+                    <td>555904（不计免赔）</td>
+                </tr>
+                <tr>
+                    <td>全车盗抢保险</td>
+                    <td>555904（不计免赔）</td>
+                </tr>
+                <tr>
+                    <td>第三者责任保险</td>
+                    <td>200,000（不计免赔）</td>
+                </tr>
+                <tr>
+                    <td>司机座位责任险</td>
+                    <td>50,000（不计免赔）</td>
+                </tr>
+                <tr>
+                    <td>自然损失险</td>
+                    <td>投保（不计免赔）</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="navbar-fixed-bottom">
+            <a href="chose.html"><button id="btn" type="button" class="btn btn-danger">去报价</button></a>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+              resultList:{}
+            },
+            created:function(){
+                var sStorage = window.sessionStorage;
+                for(var i=0;i<sStorage.length;i++){
+                    var key = sStorage.key(i);
+                    this.resultList[key] = sStorage.getItem(key);
+                }
+//                console.log(this.resultList)
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+//                var strUrl = decodeURI(location.href);
+////                console.log(decodeURI(strUrl));
+//                var arr = strUrl.split("?")[1].split("&");
+//                var ve = arr[0].split("=")[1];
+//                var en = arr[1].split("=")[1];
+//                var vi = arr[2].split("=")[1];
+//                var arr1 = [];
+//                if(ve != ""){
+//                    arr1.push({vehicle:ve});
+//                }
+//                if(en != ""){
+//                    arr1.push({engine_number:en});
+//                }
+//                if(vi != ""){
+//                    arr1.push({vin:vi});
+//                }
+////                console.log(ve.length);
+////                console.log(en.length);
+////                console.log(vi.length);
+////                arr1 = [{vehicle:ve},{engine_number:en},{vin:vi}];
+//                console.log(arr1);
+//                var _this = this;
+//                $.getJSON("http://127.0.0.1/robotjox/welcome/indexSearch?callback=?",{data:arr1},function(data){
+//                    _this.resultList = data;
+//                    console.log(data);
+//                })
+//            }
+        })
+    </script>
+</body>
+</html>

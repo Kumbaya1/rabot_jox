@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/DateTimePicker.css" />
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/chose.css">
+    <title>选择险种</title>
+</head>
+<body style="overflow:scroll;">
+    <div class="container-fluid" id="app">
+        <div id="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <a href="check.html" class=""><img src="img/返回.png" alt="消息" class="icon"></a>
+                <span>选择险种</span>
+                <a id="close" href="index.html"><img src="img/关闭.png" alt="" class="icon"/></a>
+            </nav>
+        </div>
+        <div class="details">
+            <ul>
+                <li>车牌号码：<span>{{resultList.vehicle_id}}</span></li>
+                <li>品牌型号：<span>{{resultList.vehicle_brand}}{{resultList.engine_number}}轿车</span></li>
+                <li>注册日期：<span>{{resultList.regist_data}}</span></li>
+                <li><a href="">已换车？点击修改车型</a></li>
+            </ul>
+        </div>
+        <div class="mid row">
+            <span class="col-xs-6">报价车型</span>
+            <span class="left col-xs-6">按续保车型报价 <img src="img/下.png" alt=""/></span>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>交强险起保时间</td>
+                        <td  class='input-group date col-xs-4'>
+                            <input type="text" class="form-control col-xs-4"  data-field="date"  readonly>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            <div class="dtBox"></div>
+                        </td>
+                        <td class="col-xs-4 ">
+                            <div class="switch">
+                                <input type="checkbox" value="0" name="myinput"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>商业险起保时间</td>
+                        <td  class='input-group date col-xs-4'>
+                            <input type="text" class="form-control col-xs-4" data-field="date" readonly>
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            <div class="dtBox"></div>
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <input type="checkbox" value="0" name="myinput"/>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>车辆损失险</td>
+                        <td>
+                            <div class="checkbox col-xs-4">
+                                <!--<input type="checkbox" checked="checked">-->
+                            </div>
+                            <span style="color: black;">不计免赔</span>
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <!--<input type="checkbox" value="0" name="myinput"/>-->
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>第三者责任险</td>
+                        <td>
+                            <div class="checkbox col-xs-4">
+                                <!--<input type="checkbox" checked="checked">-->
+                            </div>
+                            <span style="color: black;">不计免赔</span>
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>20万<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>司机座位险</td>
+                        <td>
+                            <div class="checkbox col-xs-4">
+                                <!--<input type="checkbox" checked="checked">-->
+                            </div>
+                            <span style="color: black;">不计免赔</span>
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>5万<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>乘客座位险</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>不投保<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>全车盗抢险</td>
+                        <td>
+                            <div class="checkbox col-xs-4">
+                                <!--<input type="checkbox" checked="checked">-->
+                            </div>
+                            <span style="color: black;">不计免赔</span>
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <!--<input type="checkbox" value="0" name="myinput"/>-->
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>划痕险</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>不投保<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>玻璃单独破碎险</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>不投保<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>自燃损失险</td>
+                        <td>
+                            <div class="checkbox col-xs-4">
+                                <!--<input type="checkbox" checked="checked">-->
+                                <!--<input type="checkbox" checked="checked">-->
+
+                            </div>
+                            <span style="color: black;">不计免赔</span>
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <input type="checkbox" value="0" name="myinput"/>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>玻璃单独破碎险</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <input type="checkbox" value="0" name="myinput"/>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>车损无法找到三方特约</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4"><div class="switch">
+                            <input type="checkbox" value="0" name="myinput"/>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>指定修理厂险</td>
+                        <td style="height: 42.2px;">
+
+                        </td>
+                        <td class="col-xs-4 left">
+                            <span>不投保<img src="img/下.png" alt=""/></span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="navbar-fixed-bottom">
+            <a href="privy.html"><button id="btn" type="button" class="btn btn-danger">下一步</button></a>
+        </div>
+    </div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/DateTimePicker.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+    <!--<script src="js/single-datepicker/laydate.js"></script>-->
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var bIsPopup = displayPopup();
+
+        $(".dtBox").DateTimePicker(
+                {
+                    isPopup: bIsPopup,
+
+                    addEventHandlers: function()
+                    {
+                        var dtPickerObj = this;
+                        console.log(this)
+
+                        $(window).resize(function()
+                        {
+                            bIsPopup = displayPopup();
+                            dtPickerObj.setIsPopup(bIsPopup);
+                        });
+                    }
+                });
+    });
+
+    function displayPopup()
+    {
+        if($(document).width() >= 768)
+            return false;
+        else
+            return true;
+    }
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            resultList:{}
+        },
+        created:function(){
+            var sStorage = window.sessionStorage;
+            for(var i=0;i<sStorage.length;i++){
+                var key = sStorage.key(i);
+                this.resultList[key] = sStorage.getItem(key);
+            }
+//            console.log(this.resultList)
+        }
+//        ,
+//        mounted:function () {
+//            laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+//            laydate({elem: '#demo1'});//绑定元素
+//            laydate({
+//                elem: '#start',
+//                format: 'YYYY-MM-DD',
+//                min: laydate.now(), //设定最小日期为当前日期
+//                max: '2099-06-16', //最大日期
+//                istime: true,
+//                istoday: false,
+//                choose: function(datas){
+//                    end.min = datas; //开始日选好后，重置结束日的最小日期
+//                    end.start = datas //将结束日的初始值设定为开始日
+//                }
+//            })
+//        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/my_agent.css"/>
+    <title>我的代理人</title>
+    <style>
+        .return{
+            position: absolute;
+            left:10px;
+        }
+    </style>
+</head>
+<body style="overflow:scroll">
+    <div class="container-fluid" id="app">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <a href="my.html" class=""><img src="img/返回.png" alt="消息" class="icon return"></a>
+
+            我的代理人
+            <img src="img/搜索-2.png" alt="" class="icon">
+        </nav>
+        <div class="query">
+            <ul id="myTab" class="nav nav-tabs text-center row">
+                <li class="active col-xs-3">
+                    <a href="#all" data-toggle="tab">全部</a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="#wait" data-toggle="tab">待审核</a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="#already" data-toggle="tab">已启用</a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="#prohibition" data-toggle="tab">已禁用</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active form-group" id="all">
+                    <div class="table" v-for="val in resultList">
+                        <ul>
+                            <li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>
+                            <li class="up right"><span><img src="img/书写.png" alt=""/></span></li>
+                            <li class="down right"><span>{{val.regist_date}}</span></li>
+                            <li class="down">{{val.phone}}</li>
+                        </ul>
+                    </div>
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">王五<span>(待审核)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">张三<span>(已禁用)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">李四<span>(已启用)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">王五<span>(待审核)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">张三<span>(已禁用)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">李四<span>(已启用)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="table">-->
+                        <!--<ul>-->
+                            <!--<li class="up">李四<span>(已启用)</span></li>-->
+                            <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                            <!--<li class="down right"><span>2017-09-07 13:09</span></li>-->
+                            <!--<li class="down">12345523434</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+                <div class="tab-pane fade form-group" id="wait">
+                    <div class="table" v-for="val in check">
+                        <div class="table" >
+                            <ul>
+                                <li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>
+                                <li class="up right"><span><img src="img/书写.png" alt=""/></span></li>
+                                <li class="down right"><span>{{val.regist_date}}</span></li>
+                                <li class="down">{{val.phone}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="tab-pane fade form-group" id="already">-->
+                        <!--<div class="table" v-for="val in use">-->
+                            <!--<ul>-->
+                                <!--<li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>-->
+                                <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                                <!--<li class="down right"><span>{{val.regist_date}}</span></li>-->
+                                <!--<li class="down">{{val.phone}}</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="tab-pane fade form-group" id="prohibition">-->
+                         <!--<div class="table" v-for="val in nonUse">-->
+                            <!--<ul>-->
+                                <!--<li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>-->
+                                <!--<li class="up right"><span><img src="img/书写.png" alt=""/></span></li>-->
+                                <!--<li class="down right"><span>{{val.regist_date}}</span></li>-->
+                                <!--<li class="down">{{val.phone}}</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="tab-pane fade form-group" id="already">
+                    <div class="table" v-for="val in resultList">
+                        <ul>
+                            <li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>
+                            <li class="up right"><span><img src="img/书写.png" alt=""/></span></li>
+                            <li class="down right"><span>{{val.regist_date}}</span></li>
+                            <li class="down">{{val.phone}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade form-group" id="prohibition">
+                    <div class="table" v-for="val in nonUse">
+                        <ul>
+                            <li class="up">{{val.real_name}}<span>({{val.usable}})</span></li>
+                            <li class="up right"><span><img src="img/书写.png" alt=""/></span></li>
+                            <li class="down right"><span>{{val.regist_date}}</span></li>
+                            <li class="down">{{val.phone}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <!--<script src="js/axios.min"></script>-->
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                resultList:[],
+                check:[],
+                nonUse:[],
+                use:[]
+            },
+            created:function(){
+                var _this = this;
+                $.getJSON("http://127.0.0.1/robotjox/welcome/resultList?callback=?",function(data){
+                    _this.resultList = data;
+                    console.log(data)
+                    data.forEach(function(val,index){
+                        if(val.usable == "启用"){
+                            this.use.push(val)
+                        }
+                        if(val.usable == "审核"){
+                            this.check.push(val)
+                        }
+                        if(val.usable == "禁用"){
+                            this.nonUse.push(val)
+                        }
+                    }.bind(_this))
+                    console.log(_this.use)
+                    console.log(_this.use)
+                    console.log(_this.use)
+                })
+            }
+
+        })
+
+    </script>
+</body>
+</html>

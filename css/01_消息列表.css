@@ -1,0 +1,43 @@
+body{
+    padding-top: 54px;
+}
+.navbar-default a{
+    float: left;
+    padding-right: 15px;
+}
+.navbar-default span{
+    position: relative;
+    left: -25px;
+}
+#message li{
+    height: 46px;
+    line-height: 46px;
+    font-size: 1.2em;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border-bottom: 1px solid red;
+    color: red;
+}
+#myTabContent div{
+    margin-top: 4em;
+}
+.alert{
+    position: relative;
+    top: 1em;
+    color: #707070;
+}
+.order {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+
+}
+.order .line {
+    display: inline-block;
+    width: 30%;
+    border-top: 1px solid #ccc ;
+}
+.order .txt {
+    color: #686868;
+    vertical-align: middle;
+}

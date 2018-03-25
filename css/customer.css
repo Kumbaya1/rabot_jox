@@ -1,0 +1,38 @@
+body{
+    padding-top: 54px;
+}
+.form-control{
+    display: inline;
+    height: 32px;
+    width: 50%;
+    text-align: center;
+    background: url(../img/搜索.png) no-repeat 1px;
+    background: #dddddd;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+.form-control input{
+    background: #000;
+}
+#myTab li{
+    width: 50%;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    color: red;
+}
+.block{
+    border-bottom: 3px solid #cccccc;
+}
+#container td{
+    color: #707070;
+}
+.name span{
+    font-size: smaller;
+    margin-left: 2em;
+}
+.name{
+    color: black;
+}

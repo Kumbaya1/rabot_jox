@@ -1,0 +1,30 @@
+.navbar-default a{
+    float: right;
+    padding-right: 15px; 
+}
+.imgs img{
+    width: 100%;
+    height: 16rem;
+}
+/**/
+#myTab li{
+    width: 50%;
+}
+#myTabContent img{
+    margin: 1em 1em;
+}
+.form-control{
+    display: inline;
+    width: 60%;
+    margin-left: 20px;
+}
+/**/
+#area .btn{
+    margin-top: 15px;
+    padding: 8px 12px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border-bottom: 1px solid red;
+    color: red;
+}
+

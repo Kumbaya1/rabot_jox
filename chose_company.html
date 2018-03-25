@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/switch.css"/>
+    <link rel="stylesheet" href="css/privy.css"/>
+    <title>选择保险公司</title>
+    <style>
+        #cap-title{
+            float:right;
+            margin-right:55px;
+        }
+        .type-name{
+            float:left;
+            margin-left:10px;
+        }
+        .chose-btn{
+            float: left;
+            width:25px;
+            height:25px;
+            border:1px solid #ccc;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+            margin-right:25px;
+            color: #fff;
+            font-size:25px;
+            font-weight:bold;
+        }
+        .bg-toggle{
+            background: red;
+        }
+    </style>
+</head>
+<body style="overflow:scroll;">
+<div class="container-fluid" id="app">
+    <div id="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <a href="privy.html" class=""><img src="img/返回.png" alt="消息" class="icon"></a>
+            <span>选择险种保险公司</span>
+            <a id="setting" href="index.html"><img src="img/关闭.png" alt="" class="icon"/></a>
+        </nav>
+    </div>
+    <div class="block">
+        <table class="table">
+            <caption>保险公司<span id="cap-title">报价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;核保</span></caption>
+            <tr class="row">
+                <td class="col-xs-8"><span class="type-name">平安车险</span></td>
+                <td class="col-xs-4 left">
+                    <span class="chose-btn">√</span>
+                    <span class="chose-btn">√</span>
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col-xs-8"><span class="type-name">太平洋车险</span></td>
+                <td class="col-xs-4 left">
+                    <span class="chose-btn">√</span>
+                    <span class="chose-btn">√</span>
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col-xs-8"><span class="type-name">人保车险</span></td>
+                <td class="col-xs-4 left">
+                    <span class="chose-btn">√</span>
+                    <span class="chose-btn">√</span>
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+    <div class="navbar-fixed-bottom">
+        <a href="accurate_quotation.html"><button id="btn" type="button" class="btn btn-danger">下一步</button></a>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            resultList:{}
+        },
+        created:function(){
+            var sStorage = window.sessionStorage;
+            for(var i=0;i<sStorage.length;i++){
+                var key = sStorage.key(i);
+                this.resultList[key] = sStorage[key];
+            }
+//            console.log(this.resultList);
+        }
+    })
+    $(function(){
+        $(".chose-btn").on("click",function(e){
+            $(e.target).toggleClass("bg-toggle");
+        })
+    })
+</script>
+</body>
+</html>
